@@ -5,7 +5,7 @@ pipeline {
     DOCKER_HOST = "${env.DOCKER_HOST_INTERNAL}"   // Variable para usar Daemon desde Docker externo (Configurar env.var en Jenkins 1°)
     DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'   // ID de la credencial en Jenkins
     GITHUB_CREDENTIALS = 'porta-jenkins'   // ID que creaste antes
-    IMAGE_NAME = "camilomrtz/end-to-end-jenkins"
+    IMAGE_NAME = "milod0k3r/end-to-end-jenkins"
     IMAGE_TAG = "${env.BUILD_NUMBER}"
   }
 
