@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copia el package.json y package-lock.json (si existe)
-COPY package*.json ./
+COPY nodeApp/package*.json ./
 
 # Instala las dependencias EXACTAMENTE como están en package.json
 RUN npm install --production
@@ -12,7 +12,7 @@ RUN npm install --production
 RUN npm install prom-client
 
 # Copia el resto del código
-COPY . .
+COPY nodeApp/. .
 
 # Expone el puerto
 EXPOSE 3000
