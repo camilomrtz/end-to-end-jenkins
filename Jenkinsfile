@@ -37,10 +37,13 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh "docker run -d --rm -p 8081:8080 --name monit-${IMAGE_TAG} ${IMAGE_NAME}:${IMAGE_TAG} || true"
-        sh "sleep 3; curl -f http://localhost:8081/health || echo 'Deploy check failed (verificar)'"
-      }
-    }
+          sh 'echo "Desplegando contenedor local..."'
+          sh "docker stop monit-${IMAGE_TAG} || true"
+          sh "docker rm monit-${IMAGE_TAG} || true"
+          sh "docker run -d --rm -p 8081:3000 --name monit-${IMAGE_TAG} ${IMAGE_NAME}:${IMAGE_TAG} || true"
+          sh "sleep 3; curl -f http://localhost:8081/health || echo 'Deploy check failed (verificar)'"
+  }
+}
   }
 
   post {
